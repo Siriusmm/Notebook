@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>注册</title>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script src="/static/js/user_ajax.js"></script>
 </head>
 <body>
 <div>
@@ -11,7 +13,8 @@
         <table>
             <tr>
                 <td>用户名</td>
-                <td colspan="2"><input type="text" name="username"></td>
+                <td colspan="2"><input type="text" name="username" id="input_username"></td>
+                <td><span id="info"></span></td>
             </tr>
             <tr>
                 <td>密码</td>
