@@ -17,11 +17,24 @@ def login_views(request):
         if 'uname' in request.session or 'uname' in request.COOKIES:
             return render(request, 'index.html')
         else:
+            result=''
             return render(request,'login.html')
     else:
         uname=request.POST.get('uname',None)
         upassword=request.POST.get('upassword',None)
-        pass
+        upwd=md=hashlib.md5()
+        md.update(upassword.encode("utf-8"))
+        pwd=md.hexdigest()
+        user=User.objects.filter(user_name=uname,user_password=pwd)
+        if user:
+            request.session["uname"]=uname
+            resp = HttpResponseRedirect("/")
+            if "remember_password" in request.POST:
+                resp.set_cookie("uname","uname",3600*24*365)
+            return resp
+        else:
+            result="用户名或密码错误"
+            return render(request,"login.html",locals())
 
 def register_views(request):
     if request.method == 'GET':
@@ -29,12 +42,20 @@ def register_views(request):
     else :
         username=request.POST.get("username","")
         password=request.POST.get("password","")
+        avatar=request.FILES.get("avatar","")
+        if avatar:
+            avatar_name = username + "." + avatar.name.split(".")[-1]
+            with open("upload/avatar/"+avatar_name, "wb") as f:
+                for chunk in avatar.chunks():
+                    f.write(chunk)
+        else:
+            avatar=None
         if username and password:
             md=hashlib.md5()
             md.update(password.encode("utf-8"))
             pwd=md.hexdigest()
-            User.objects.create(user_name=username,user_password=pwd)
-            return HttpResponseRedirect('/login')
+            User.objects.create(user_name=username,user_password=pwd,user_avatar=avatar_name)
+            return HttpResponseRedirect('/login/')
 
 def check_views(request):
     user_name=request.GET.get("username")

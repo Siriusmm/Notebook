@@ -8,7 +8,7 @@
 </head>
 <body>
 <div>
-    <form action="/register" method="post">
+    <form action="/register/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <table>
             <tr>
@@ -23,6 +23,9 @@
             <tr>
                 <td>确认密码</td>
                 <td colspan="2"><input type="password" name="rpassword"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="file" name="avatar"><span>上传头像</span></td>
             </tr>
             <tr>
                 <td></td>
