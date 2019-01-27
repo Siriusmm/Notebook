@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>学习笔记</title>
+	<title>学习笔记</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <script src="/static/js/jquery-1.11.3.js"></script>
 </head>
 <body>
-    <h1>这是主页</h1>
+	<p id="index">
+		<span>NOTEBOOK</span>
+		<span id="user"><a href="show/{{user.user_name}}">{{user.user_name}}</a></span>
+		<img src="">
+	</p>
+	<div id="item">
+		<div>
+            <p>目录</p>
+            {% for i in notes %}
+                <p><a href="index/{{ i.id }}">{{ i.notes_title }}</a></p>
+            {% endfor %}
+		</div>
+	</div>
+	<div id=content>
+		<form action="/" method="post">
+            {%csrf_token%}
+			<div id="notehead">
+				<input type="text" name="title" id="title" placeholder="标题">
+				<input type="submit" value="保存" id="save">
+			</div>
+			<div>
+				<textarea cols="100" rows="30" id="notes" name="notes"></textarea>
+			</div>
+		</form>
+	</div>
+
 </body>
 </html>

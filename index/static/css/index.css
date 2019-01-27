@@ -1,0 +1,66 @@
+#index{
+	margin-top: 30px;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 0;
+	padding-bottom: 5px;
+}
+#user{
+	float: right;
+	margin-right: 20px;
+}
+#index img{
+	width: 30px;
+	height: 30px;
+	border: 1px solid #ccc;
+	float: right;
+}
+
+#item{
+	width: 20%;
+	height: 600px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border: 1px solid #ccc;
+	margin-left: 80px;
+	float: left;
+}
+#item>div{
+	width: 100%;
+}
+
+#content{
+	width: 70%;
+	height: 600px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	border-right: 1px solid #ccc;
+	float: left;
+}
+#notehead{
+	height: 50px;
+	border-bottom: 1px solid #ccc;
+}
+#title{
+	width: 100px;
+	height: 45px;
+	border: none;
+	font-size: 18px;
+	font-weight: bolder;
+	margin-left: 5px;
+	outline: none;
+	float: left;
+}
+#save{
+	width: 70px;
+	height: 30px;
+	font-size: 16px;
+	float: right;
+	margin:10px 20px;
+}
+#notes{
+	outline: none;
+	overflow: auto;
+	margin: 5px 10px 20px 10px;
+	border: none;
+	font-size: 18px;
+}

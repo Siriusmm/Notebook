@@ -124,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'index/templates'),)
+# TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'index/templates'),)
 STATICFILES_DIRS=(BASE_DIR,'static')
 
 SESSION_COOKIE_AGE=60*60*24*30
